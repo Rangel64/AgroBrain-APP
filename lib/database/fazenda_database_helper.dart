@@ -89,10 +89,10 @@ class DataBaseFazendaHelper{
         await db.rawQuery('SELECT COUNT(*) FROM fazenda'));
   }
 
-  Future<int> updateFazenda(Map<String, dynamic> row) async {
+  Future<int> updateFazenda(Fazenda fazenda) async {
     Database db = await instance.database;
-    int id = row[columnId];
-    return await db.update("fazenda", row, where: '$columnId = ?', whereArgs: [id]);
+    int id = fazenda.id;
+    return await db.update("fazenda", fazenda.toMap(), where: '$columnId = ?', whereArgs: [id]);
   }
 
   Future<int> deleteFazenda(int id) async {

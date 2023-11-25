@@ -31,7 +31,7 @@ class _HomeFazendasState extends State<HomeFazendas> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChosenFazenda(fazenda: fazenda),
+        builder: (context) => ChosenFazenda(fazenda: fazenda,refreshItems: _loadItems,),
       ),
     );
   }

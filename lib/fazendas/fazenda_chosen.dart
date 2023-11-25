@@ -3,10 +3,12 @@ import 'package:unicons/unicons.dart';
 
 import '../models/Fazendas.dart';
 import '../piquetes/home_piquetes.dart';
+import 'fazenda_settings.dart';
 
 class ChosenFazenda extends StatefulWidget {
   Fazenda fazenda;
-  ChosenFazenda({required this.fazenda,Key? key}) : super(key: key);
+  final Function() refreshItems;
+  ChosenFazenda({required this.fazenda, required this.refreshItems,Key? key}) : super(key: key);
 
 
   @override
@@ -26,25 +28,34 @@ class _ChosenFazendaState extends State<ChosenFazenda> {
     );
   }
 
+  fazendaSettings() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FazendaSettings(fazenda:fazenda,refreshItems:widget.refreshItems),
+      ),
+    );
+  }
+
   _ChosenFazendaState({required this.fazenda});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 16, 40, 29),
+      backgroundColor: const Color.fromARGB(255, 16, 40, 29),
       body: Center(
           child: Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              constraints:BoxConstraints.expand(),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              constraints:const BoxConstraints.expand(),
               decoration:
-                  BoxDecoration(color: Color.fromARGB(255, 16, 40, 29)),
+                  const BoxDecoration(color: Color.fromARGB(255, 16, 40, 29)),
               child: Container(
-                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Stack(
                   children: [
                     Container(
                         margin: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [CircleAvatar()],
                         )),
@@ -137,9 +148,9 @@ class _ChosenFazendaState extends State<ChosenFazenda> {
                         Container(
                           alignment: AlignmentDirectional.centerEnd,
                           height: 60,
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                           decoration: BoxDecoration(
-                            color:  Color.fromARGB(255, 29, 116, 74),
+                            color:  const Color.fromARGB(255, 29, 116, 74),
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           child: Row(
@@ -147,34 +158,49 @@ class _ChosenFazendaState extends State<ChosenFazenda> {
                             children: [
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
-                                  UniconsLine.apps,
+                                icon: const Icon(
+                                  UniconsLine.map_marker,
                                   color: Colors.white,
                                 ),
                                 iconSize: 30,
                               ),
-                              SizedBox(width: 25),
+
+                              const SizedBox(width: 25),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   UniconsLine.document_info,
                                   color: Colors.white,
                                 ),
                                 iconSize: 30,
                               ),
-                              SizedBox(width: 70),
+
+                              const SizedBox(width: 25),
+                              IconButton(
+                                onPressed: () {
+                                  fazendaSettings();
+                                },
+                                icon: const Icon(
+                                  UniconsLine.setting,
+                                  color: Colors.white,
+                                ),
+                                iconSize: 30,
+                              ),
+
+                              const SizedBox(width: 25),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   UniconsLine.bell,
                                   color: Colors.white,
                                 ),
                                 iconSize: 30,
                               ),
-                              SizedBox(width: 25),
+
+                              const SizedBox(width: 25),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   UniconsLine.search,
                                   color: Colors.white,
                                 ),
